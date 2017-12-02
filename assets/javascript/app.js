@@ -1,4 +1,7 @@
 //global vars to use
+var nflTeams = ["cleveland browns", "seattle seahawks", "miami dolphins","new york giants", "oakland raiders", "detroit lions", "buffalo bills", "houstan texans", "dallas cowboys", "new york jets"];
+
+
 
 //on click function for gifs to load on page
 $("button").on("click", function () {
@@ -22,11 +25,26 @@ $("button").on("click", function () {
         .done(function (response) {
             console.log(response);
             var result = response.data;
-            
+            //function for multi buttons on page
+            function renderbuttons() {
+                //clearing out the created buttons
+                $("<button>").empty();
+                
+                for (var j = 0; j < nflTeams.length; j++){
+                    var a = $("<button>");
+                   
+                    a.attr("data-nfl", nflTeams[i]);
+                    a.text(nflTeams[i]);
+                    $("#nfl-buttons").append(a);
+                }
+                
+               
+            }
+
             // clearing out the id nfl teams before clicked on again
             $("#nfl-teams").empty();
             //a loop to go through the array to show rating
-            for (var i = 0; i < result.length; i++){
+            for (var i = 0; i < result.length; i++) {
                 // a new div to hold the gifs <img>
                 gifDiv = $("<div class='gifdiv'>");
                 // how we got the rating for each image
@@ -37,14 +55,15 @@ $("button").on("click", function () {
                 var image = $("<img class='images'>");
                 //adding attribute for the source of the image 
                 image.attr("src", result[i].images.fixed_height_small.url);
-                //connecting the image and ratings to the 
+                //connecting the image and ratings to the new div
                 gifDiv.prepend(p);
                 gifDiv.prepend(image);
-
+                // sending the new div to the empty div nfl-teams
                 $("#nfl-teams").prepend(gifDiv);
 
             }
 
         });
-        console.log(this);
+    console.log(this);
+    renderbuttons();
 });
