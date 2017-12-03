@@ -3,14 +3,15 @@
  //array of teams to start the 10 buttons with
  var nflTeams = ["cleveland browns", "seattle seahawks", "miami dolphins", "new york giants", "oakland raiders", "detroit lions", "buffalo bills", "houstan texans", "dallas cowboys", "new york jets"];
  console.log(nflTeams);
-
+ //var link for queryURL link
+var queryURL = "https://api.giphy.com/v1/gifs/search";
  //render the 10 button
  nflTeams.forEach(renderButton);
  //function connecting array to each button
  function renderButton(ele, index, myArray) {
 
      //making local var for array length
-     //myArray = myArray[index];
+     myArray = myArray[index];
      //creating new buttons for the array 
      var a = $("<button>");
      //adding a class to new buttons
@@ -24,13 +25,14 @@
      //connecting the js to html for each button
      $("#nflbuttons").append(a);
      console.log(index + " element: " + ele);
+
  }
 
  //function for gifs to load on page
  function displayGifs() {
 
      nfl = $(this).attr("data-nfl");
-     var queryURL = "https://api.giphy.com/v1/gifs/search";
+     
      //the ajax connector for gif buttons
      $.ajax({
              url: queryURL,
@@ -68,10 +70,11 @@
          });
  }
  console.log(this + "this");
+ $("button").on("click", ".teams", displayGifs);
  //click on event for displaying the gifs
 
  //function that adds new button
- $("#submitbutton").on("click", function (event) {
+ /*$("#submitbutton").on("click", function (event) {
 
      var nfl = $("#input").val().trim();
 
@@ -85,4 +88,4 @@
 
  renderButton();
 
- console.log();
+ console.log();*/
