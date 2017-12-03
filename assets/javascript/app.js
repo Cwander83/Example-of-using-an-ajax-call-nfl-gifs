@@ -5,19 +5,19 @@
  console.log(nflTeams);
  //var link for queryURL link
 
- //render the 10 button
+ //render the starting 10 button
  nflTeams.forEach(renderButton);
  //function connecting array to each button
  function renderButton(ele, index) {
      //creating new buttons for the array 
      var a = $("<button id='teambuttons'>");
      //adding a class to new buttons
-     a.addClass("teams");
+     a.addClass("gifdiv teams");
      //connecting the data attr to the array
      a.attr("data-nfl", ele);
      //adding the new of the string to the button
      a.text(ele);
-    //connecting the js to html for each button
+     //connecting the js to html for each button
      $("#nflbuttons").append(a);
      console.log(index + " element: " + ele);
 
@@ -65,5 +65,18 @@
          });
  }
  console.log(this + "this");
+ 
+ 
+
+ $("#add-team").on("click", function (event) {
+     event.preventDefault();
+     var teams = $("#input").val().trim();
+     $("#input").val("").focus();
+     nflTeams.push(teams);
+     renderButton(teams);
+ })
+
+ $(document).on("click", ".gifdiv", displayGifs);
  // on click for each rendered button connecting it 
- $(".teams").on("click", displayGifs);
+ //$(".teams").on("click", displayGifs);
+ 
