@@ -4,25 +4,20 @@
  var nflTeams = ["cleveland browns", "seattle seahawks", "miami dolphins", "new york giants", "oakland raiders", "detroit lions", "buffalo bills", "houstan texans", "dallas cowboys", "new york jets"];
  console.log(nflTeams);
  //var link for queryURL link
-var queryURL = "https://api.giphy.com/v1/gifs/search";
+
  //render the 10 button
  nflTeams.forEach(renderButton);
  //function connecting array to each button
- function renderButton(ele, index, myArray) {
-
-     //making local var for array length
-     myArray = myArray[index];
+ function renderButton(ele, index) {
      //creating new buttons for the array 
-     var a = $("<button>");
+     var a = $("<button id='teambuttons'>");
      //adding a class to new buttons
      a.addClass("teams");
-
      //connecting the data attr to the array
-     a.attr("data-nfl", nflTeams[myArray]);
+     a.attr("data-nfl", ele);
      //adding the new of the string to the button
      a.text(ele);
-
-     //connecting the js to html for each button
+    //connecting the js to html for each button
      $("#nflbuttons").append(a);
      console.log(index + " element: " + ele);
 
@@ -32,7 +27,7 @@ var queryURL = "https://api.giphy.com/v1/gifs/search";
  function displayGifs() {
 
      nfl = $(this).attr("data-nfl");
-     
+     var queryURL = "https://api.giphy.com/v1/gifs/search";
      //the ajax connector for gif buttons
      $.ajax({
              url: queryURL,
@@ -70,22 +65,5 @@ var queryURL = "https://api.giphy.com/v1/gifs/search";
          });
  }
  console.log(this + "this");
- $("button").on("click", ".teams", displayGifs);
- //click on event for displaying the gifs
-
- //function that adds new button
- /*$("#submitbutton").on("click", function (event) {
-
-     var nfl = $("#input").val().trim();
-
-     $("#input").val("").focus();
-
-     nlfTeams.push(nfl);
-
-     renderButton();
- })
- $("#nflbuttons").on ("click", ".teams", displayGifs);
-
- renderButton();
-
- console.log();*/
+ // on click for each rendered button connecting it 
+ $(".teams").on("click", displayGifs);
