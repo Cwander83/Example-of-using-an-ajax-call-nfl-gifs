@@ -54,9 +54,9 @@
                  //creating a <img> for the gifs
                  var image = $("<img class='images'>");
                  //adding attributes to image
-                 image.attr("src", result[i].images.fixed_height_still.url);
-                 image.attr("data-still", result[i].images.fixed_height_still.url);
-                 image.attr("data-animate", result[i].images.fixed_height.url);
+                 image.attr("src", result[i].images.fixed_height_small_still.url);
+                 image.attr("data-still", result[i].images.fixed_height_small_still.url);
+                 image.attr("data-animate", result[i].images.fixed_height_small.url);
                  image.attr("data-state", "still");
                  //connecting the image and ratings to the new div
                  gifDiv.prepend(p);
