@@ -1,23 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
 *{
     box-sizing: border-box;
 }
 
-
-
 body {
     background-image: url(../images_audio/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Kanit', sans-serif;
 }
-
+label{
+    font-size: 18px;
+    color: white;
+}
 
 
 button{
-
+    height: 35px;
+    width:200px;
     background-color: lightgoldenrodyellow;
     margin:3px;
     border-radius: 50%;
-    
 }
 .container{
+    margin-top: 40px;
     background-color: transparent;
 }
 .gifs{

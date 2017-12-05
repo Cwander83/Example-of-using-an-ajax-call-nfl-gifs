@@ -3,7 +3,7 @@
  //array of teams to start the 10 buttons with
  var nflTeams = ["cleveland browns", "seattle seahawks", "miami dolphins", "new york giants", "oakland raiders", "detroit lions", "buffalo bills", "houstan texans", "dallas cowboys", "new york jets"];
  //console.log(nflTeams);
- //var link for queryURL link
+
 
  //render the starting 10 button
  nflTeams.forEach(renderButton);
